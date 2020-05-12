@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     async logout() {
+      this.$store.commit("process/setLoading", true);
       await this.$store.dispatch("auth/logout");
 
       this.$router.push("/login");

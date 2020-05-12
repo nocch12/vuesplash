@@ -131,6 +131,7 @@ export default {
       }
     },
     async login() {
+      this.$store.commit("process/setLoading", true);
       // authストアのloginアクションを呼び出す
       await this.$store.dispatch("auth/login", this.loginForm);
 
