@@ -76,6 +76,6 @@ class Photo extends Model
    */
   public function getUrlAttribute()
   {
-    return Storage::disk('local')->url($this->attributes['filename']);
+    return Storage::disk('public')->url($this->attributes['filename']);
   }
 }
