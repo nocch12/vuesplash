@@ -6,6 +6,8 @@ import store from "./store";
 import App from "./App.vue";
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar);
+import VueLoading from "vue-loading-template";
+Vue.use(VueLoading, { type: "bars" });
 
 const createApp = async () => {
   await store.dispatch("auth/currentUser");
@@ -15,21 +17,7 @@ const createApp = async () => {
     router,
     store,
     components: { App },
-    template: "<App />",
-    methods: {
-      progressFinish() {
-        if (this.$store.state.process.loading) {
-          this.$Progress.finish();
-          this.$store.commit("process/setLoading", false);
-        }
-      },
-      progressStart() {
-        if (!this.$store.state.process.loading) {
-          this.$Progress.start();
-          this.$store.commit("process/setLoading", true);
-        }
-      }
-    }
+    template: "<App />"
   });
 };
 

@@ -10,12 +10,19 @@ import SystemError from "./pages/errors/System.vue";
 
 import store from "./store";
 
-export default new Router({
+const router = new Router({
   mode: "history",
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes: [
     {
       path: "/",
-      component: PhotoList
+      component: PhotoList,
+      props: route => {
+        const page = route.query.page;
+        return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 };
+      }
     },
     {
       path: "/photo/:id",
@@ -28,7 +35,6 @@ export default new Router({
       beforeEnter(to, from, next) {
         if (store.getters["auth/check"]) {
           next("/");
-          store.commit("process/setLoading", false);
         } else {
           next();
         }
@@ -40,3 +46,12 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  console.log(32);
+
+  store.commit("process/setLoading", true);
+  next();
+});
+
+export default router;

@@ -122,6 +122,7 @@ export default {
   },
   methods: {
     async register() {
+      this.$store.commit("process/setLoading", true);
       // authストアのresigterアクションを呼び出す
       await this.$store.dispatch("auth/register", this.registerForm);
 
@@ -146,6 +147,9 @@ export default {
   },
   created() {
     this.clearError();
+  },
+  mounted() {
+    this.$store.commit("process/setLoading", false);
   }
 };
 </script>
