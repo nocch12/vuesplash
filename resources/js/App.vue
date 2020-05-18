@@ -6,6 +6,7 @@
     </header>
     <main>
       <div class="container">
+        <message />
         <router-view />
       </div>
     </main>
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import Message from "./components/Message.vue";
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import { INTERNAL_SERVER_ERROR } from "./util";
@@ -21,6 +23,7 @@ import { mapState } from "vuex";
 
 export default {
   components: {
+    Message,
     Navbar,
     Footer
   },

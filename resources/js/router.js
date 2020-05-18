@@ -4,6 +4,7 @@ Vue.use(VueRouter);
 
 import Router from "vue-router";
 import PhotoList from "./pages/PhotoList.vue";
+import PhotoDetail from "./pages/PhotoDetail.vue";
 import Login from "./pages/Login.vue";
 import SystemError from "./pages/errors/System.vue";
 
@@ -15,6 +16,11 @@ export default new Router({
     {
       path: "/",
       component: PhotoList
+    },
+    {
+      path: "/photo/:id",
+      component: PhotoDetail,
+      props: true
     },
     {
       path: "/login",

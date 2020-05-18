@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+  return view('test');
+});
+
+Route::post('/test', 'PhotoController@create')->name('test');
+
+
 Route::get('/{any}', function () {
-    return view('index');
+  return view('index');
 })->where('any', '.*');
 
 Auth::routes();
