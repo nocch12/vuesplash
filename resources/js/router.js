@@ -25,7 +25,7 @@ const router = new Router({
       }
     },
     {
-      path: "/photo/:id",
+      path: "/photos/:id",
       component: PhotoDetail,
       props: true
     },
@@ -48,8 +48,6 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(32);
-
   store.commit("process/setLoading", true);
   next();
 });
